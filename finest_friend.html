@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Happy Birthday, Finest Friend!</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .card {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 90%;
+        text-align: center;
+        animation: fadeIn 1s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 2.2em;
+        color: #ff4e94;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.2em;
+        color: #444;
+        min-height: 100px;
+        margin: 20px 0;
+      }
+
+      .buttons {
+        margin-top: 20px;
+      }
+
+      button {
+        background-color: #ff66a3;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 30px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #e05590;
+      }
+
+      #backBtn {
+        display: none;
+      }
+
+      #nextBtn {
+        display: none;
+      }
+
+      #nextPageBtn {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Oh! Elara, My Finest Friend!</h1>
+      <p id="message">Click the button to begin your surprise 💖</p>
+
+      <div class="buttons">
+        <button onclick="start()" id="startBtn">Start</button>
+        <button onclick="goBack()" id="backBtn">Back</button>
+        <button onclick="goNext()" id="nextBtn">Next</button>
+        <button onclick="goNextPage()" id="nextPageBtn">Next Page</button>
+      </div>
+    </div>
+
+    <script>
+      const messages = [
+        "🌟 You always bring light to others, even in your darkest times.",
+        "🌈 Your kindness knows no limits, you're naturally caring and selfless.",
+        "💫 You listen with your heart, not just your ears.",
+        "🌻 You lift others up without expecting anything in return.",
+        "💖 You love deeply, honestly, and without judgment.",
+        "🎉 And that’s why you’re not just a finest friend, you're the finest soul I’ve ever known. Happy Birthday!",
+      ];
+
+      let current = -1;
+
+      function start() {
+        current = 0;
+        document.getElementById("message").innerText = messages[current];
+        document.getElementById("startBtn").style.display = "none";
+        document.getElementById("nextBtn").style.display = "inline-block";
+        document.getElementById("backBtn").style.display = "none";
+        document.getElementById("nextPageBtn").style.display = "none";
+      }
+
+      function goNext() {
+        if (current < messages.length - 1) {
+          current++;
+          document.getElementById("message").innerText = messages[current];
+          document.getElementById("backBtn").style.display = "inline-block";
+        }
+        if (current === messages.length - 1) {
+          document.getElementById("nextBtn").style.display = "none";
+          document.getElementById("nextPageBtn").style.display = "inline-block";
+        }
+      }
+
+      function goBack() {
+        if (current > 0) {
+          current--;
+          document.getElementById("message").innerText = messages[current];
+          document.getElementById("nextBtn").style.display = "inline-block";
+        }
+        if (current === 0) {
+          document.getElementById("backBtn").style.display = "none";
+        }
+      }
+
+      function goNextPage() {
+        window.location.href = "countdown.html";
+      }
+    </script>
+  </body>
+</html>

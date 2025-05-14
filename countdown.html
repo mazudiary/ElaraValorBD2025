@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Countdown to Your Next Birthday</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffe6f7, #e0f7fa);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", cursive, sans-serif;
+        color: #ffffff;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
+        animation: fadeIn 1s ease;
+        backdrop-filter: blur(8px);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        font-size: 2.7em;
+        margin-bottom: 10px;
+        color: #ff69b4;
+        text-shadow: 1px 1px 2px #fff0f5;
+      }
+
+      p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        font-style: italic;
+        color: #fdf2f8;
+        text-shadow: 1px 1px 2px #f48fb1;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .time-box {
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 15px;
+        padding: 20px;
+        width: 100px;
+        box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+        transition: transform 0.3s;
+      }
+
+      .time-box:hover {
+        transform: scale(1.07);
+      }
+
+      .digit {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #ffffff;
+        animation: pulse 1s infinite;
+        text-shadow: 1px 1px 2px #ffccdd;
+      }
+
+      .label {
+        font-size: 1em;
+        color: #ffe6f7;
+      }
+
+      button {
+        background-color: #ff85b3;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 30px;
+        margin: 15px 10px 0;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        box-shadow: 0 5px 10px rgba(255, 105, 180, 0.3);
+      }
+
+      button:hover {
+        background-color: #ff5caa;
+        transform: scale(1.05);
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>⏳ Countdown to Your Next Birthday</h1>
+      <p>“Every second is a heartbeat closer to celebrating you again.”</p>
+      <div class="countdown">
+        <div class="time-box">
+          <div class="digit" id="days">--</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="time-box">
+          <div class="digit" id="hours">--</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="time-box">
+          <div class="digit" id="minutes">--</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="time-box">
+          <div class="digit" id="seconds">--</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+      <button onclick="goPrevPage()">Back</button>
+      <button onclick="goNextPage()">Next Page</button>
+    </div>
+
+    <script>
+      const tick = document.getElementById("tickSound");
+      const targetDate = new Date("May 15, 2025 00:00:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff < 0) {
+          document.querySelector(".countdown").innerHTML =
+            "<h2>🎉 It's your birthday again!</h2>";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        tick.currentTime = 0;
+        tick.play();
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      function goNextPage() {
+        window.location.href = "memories.html";
+      }
+
+      function goPrevPage() {
+        window.location.href = "finest_friend.html";
+      }
+    </script>
+  </body>
+</html>

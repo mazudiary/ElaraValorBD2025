@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message to Elara</title>
+    <style>
+      @property --α {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+      }
+
+      .card {
+        position: relative;
+        max-width: 16em;
+        aspect-ratio: 3 / 2;
+        border: solid 6px #0000;
+        padding: 1.5em;
+        border-radius: 1.5em;
+        background: #f7d1e0;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .card::before,
+      .card::after {
+        --full: conic-gradient(red 0 0);
+        position: absolute;
+        inset: -6px;
+        border: solid 6px transparent;
+        border-radius: 1.5em;
+        box-shadow: 0 0 10em rgba(0, 0, 0, 0.001);
+        background: conic-gradient(
+            from var(--α),
+            #f94144,
+            #f3722c,
+            #f8961e,
+            #f9844a,
+            #f9c74f,
+            #90be6d,
+            #43aa8b,
+            #4d908e,
+            #277da1,
+            #577590,
+            #f94144
+          )
+          border-box;
+        mask: var(--full) no-clip subtract, var(--full) padding-box;
+        pointer-events: none;
+        animation: α 4s linear infinite;
+        content: "";
+      }
+
+      .card::after {
+        filter: blur(3em);
+      }
+
+      @keyframes α {
+        to {
+          --α: 1turn;
+        }
+      }
+
+      html,
+      body,
+      div {
+        box-sizing: border-box;
+        display: grid;
+        place-items: center;
+      }
+
+      html {
+        min-height: 100%;
+      }
+
+      body {
+        background: url("assets/cardBg.jpeg") 5% / cover #212121;
+        background-blend-mode: multiply;
+        color: #f0f0f0;
+        font: 300 clamp(0.875em, 5vw, 2.5em) "Saira", sans-serif;
+        text-align: center;
+        text-wrap: balance;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" contenteditable>
+      <h1 style="font-size: 1.5em; font-weight: bold; color: #f3722c">
+        Finest Elara Valor,
+      </h1>
+      <p style="color: #f9844a">
+        Each day, I find myself wishing for nothing but your happiness,
+        strength, and the peace that comes with knowing how deeply you are loved
+        and valued.
+      </p>
+      <p style="color: #f9c74f">
+        I dream of seeing all your wishes come true, of watching your hopes take
+        flight like birds soaring through the sky. Every step you take is a step
+        closer to the beautiful future you deserve.
+      </p>
+      <p style="color: #90be6d">
+        Your heart, so full of kindness and courage, has the power to change the
+        world. Never stop dreaming, for within you lies an infinite universe of
+        possibilities waiting to unfold.
+      </p>
+      <p style="color: #43aa8b">
+        May you always find joy in the little moments, in the quiet wonders of
+        life, and in the love that surrounds you. And may you never lose sight
+        of the incredible person you are, and the extraordinary future that
+        awaits.
+      </p>
+      <p style="font-style: italic; color: #277da1">
+        With all my love, hope, and belief in you, forever and always,
+      </p>
+    </div>
+  </body>
+</html>
